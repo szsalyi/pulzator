@@ -1,2 +1,2 @@
-# pulzator
+# Pulzator
 Stock managing application.
