@@ -1,0 +1,23 @@
+{
+    "name": "pulzator-ui",
+    "version": "0.1.0",
+    "description": "Angular UI module of the Pulzator App.",
+    "scripts": {
+        "dev": "webpack",
+        "devstart": "webpack-dev-server --hot --inline"
+    },
+    "devDependencies": {
+        "clean-webpack-plugin": "0.1.18",
+        "copy-webpack-plugin": "^4.5.0",
+        "html-webpack-plugin": "3.0.5",
+        "jshint": "^2.9.5",
+        "jshint-loader": "^0.8.4",
+        "ng-annotate-loader": "^0.6.1",
+        "webpack": "^3.11.0",
+        "webpack-dev-server": "^2.0.0"
+    },
+    "dependencies": {
+        "angular": "1.6.9",
+        "angular-cookies": "^1.6.9"
+    }
+}

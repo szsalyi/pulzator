@@ -1,0 +1,11 @@
+spring:
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: create
+        database-platform: org.hibernate.dialect.HSQLDialect
+
+    datasource:
+        driver-class-name: org.hsqldb.jdbc.JDBCDriver
+        url: jdbc:hsqldb:file:db/fcdb
+        username: fcdb

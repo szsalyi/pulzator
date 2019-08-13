@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<FindBugsFilter>
+    <Match>
+        <Bug pattern="DMI_HARDCODED_ABSOLUTE_FILENAME"/>
+        <Package name="com.github.szsalyi.pulzator.common.audit.DateAudit"/>
+        <Package name="com.github.szsalyi.pulzator.common.audit.DateAudit"/>
+    </Match>
+</FindBugsFilter>

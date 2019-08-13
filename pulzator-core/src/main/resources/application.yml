@@ -1,0 +1,12 @@
+server:
+    port: 8080
+    server:
+        servlet:
+            contextPath: /pulzator
+
+spring:
+    profiles:
+        active: prod
+    jpa:
+        hibernate:
+            use-new-id-generator-mappings: false

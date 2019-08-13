@@ -1,0 +1,17 @@
+spring:
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        database-platform: org.hibernate.dialect.MySQLDialect
+
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/PULZATOR
+        username: root
+        password: rooz
+
+## Hibernate Logging
+##logging:
+##    level:
+##    org.hibernate.SQL: DEBUG
