@@ -27,7 +27,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping(consumes = MediaType.ALL_VALUE)
-    public ResponseEntity<UserVO> saveUser(final @RequestBody UserVO user) {
+    public ResponseEntity<UserVO> saveUser(final @RequestBody UserVO user) throws Exception {
         user.setRole(new HashSet<>(Arrays.asList(new Role(RoleName.ROLE_EMPLOYEE))));
         user.setEnabled(true);
 
