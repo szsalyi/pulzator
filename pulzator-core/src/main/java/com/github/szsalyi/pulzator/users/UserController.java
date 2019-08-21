@@ -43,9 +43,20 @@ public class UserController {
     }
 
     @GetMapping(path = "/exists", consumes = MediaType.ALL_VALUE)
-    public ResponseEntity<Boolean> getUser(@RequestParam final String email) {
-        if (userService.findByEmail(email) != null) {
-            return ResponseEntity.ok().build();
+    public ResponseEntity<UserVO> getUserByEmail(@RequestParam final String email) {
+        UserVO userVO = userService.findByEmail(email);
+        if (userVO != null) {
+            return ResponseEntity.ok(userVO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping(consumes = MediaType.ALL_VALUE)
+    public ResponseEntity<UserVO> getUser(@RequestParam final String name) {
+        UserVO userVO = userService.findByUsername(name);
+        if (userVO != null) {
+            return ResponseEntity.ok(userVO);
         } else {
             return ResponseEntity.notFound().build();
         }

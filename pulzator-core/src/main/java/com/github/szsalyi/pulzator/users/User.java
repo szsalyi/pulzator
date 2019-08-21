@@ -47,7 +47,7 @@ public class User {
     @NotBlank
     @Size(max = 40)
     @Column(name = "USERNAME", nullable = false)
-    private String userName;
+    private String username;
 
     @NotBlank
     @Size(max = 40)

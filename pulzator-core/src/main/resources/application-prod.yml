@@ -11,6 +11,9 @@ spring:
         username: root
         password: rooz
 
+app:
+    ##jwtSecret: JWTSuperSecretKey
+    jwtExpirationInMs : 604800000
 ## Hibernate Logging
 ##logging:
 ##    level:
