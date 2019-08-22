@@ -1,5 +1,8 @@
 package com.github.szsalyi.pulzator.products;
 
+import com.github.szsalyi.pulzator.categories.CategoryService;
+import com.github.szsalyi.pulzator.categories.CategoryVO;
+import com.github.szsalyi.pulzator.productmeasures.ProductMeasureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,33 +20,43 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Autowired
-    private ProductMeasureRepository  productMeasureRepository;
+    private CategoryService categoryService;
+
+    @Autowired
+    private ProductMeasureRepository productMeasureRepository;
 
     @Override
     public ProductVO save(final ProductVO productVO) {
         Product product = productMapper.toEntity(productVO);
-        product.setProductMeasure(productMeasureRepository.findById(productVO.getProductMeasure().getId()).get());
-        return productMapper.toVO(productRepository.save(product));
+        product.setProductMeasure(productMeasureRepository
+                .findById(productVO.getProductMeasure().getId()).get());
+        ProductVO savedProduct = productMapper.toVO(productRepository.save(product));
+
+        CategoryVO categoryVO = categoryService.getById(productVO.getCategory().getId());
+        savedProduct.setCategory(categoryVO);
+        return savedProduct;
     }
 
     @Override
-    public void delete(final Long id) throws Exception {
-        Product product = productRepository.findById(id)
-                .orElseThrow(Exception::new);
+    public void delete(final Long id) {
+        Product product = productRepository.findById(id).get();
         productRepository.delete(product);
     }
 
     @Override
-    public void delete(final String name) throws Exception {
-        Product product = productRepository.findByName(name)
-                .orElseThrow(Exception::new);
+    public void delete(final String name) {
+        Product product = productRepository.findByName(name).get();
         this.delete(product.getId());
     }
 
     @Override
-    public Optional<ProductVO> loadById(final Long id) throws Exception {
-        return Optional.of(productMapper.toVO(productRepository.findById(id)
-                .orElseThrow(Exception::new)));
+    public void delete(final ProductVO productVO) {
+        productRepository.delete(productMapper.toEntity(productVO));
+    }
+
+    @Override
+    public Optional<ProductVO> loadById(final Long id) {
+        return Optional.of(productMapper.toVO(productRepository.findById(id).get()));
     }
 
     @Override
@@ -65,4 +78,5 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductVO> loadAll() {
         return productMapper.productsToVo(productRepository.findAll());
     }
+
 }

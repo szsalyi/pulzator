@@ -1,7 +1,7 @@
 package com.github.szsalyi.pulzator.users;
 
-import com.github.szsalyi.pulzator.role.Role;
-import com.github.szsalyi.pulzator.role.RoleName;
+import com.github.szsalyi.pulzator.roles.Role;
+import com.github.szsalyi.pulzator.roles.RoleName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

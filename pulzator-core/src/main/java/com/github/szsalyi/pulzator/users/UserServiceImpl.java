@@ -1,8 +1,8 @@
 package com.github.szsalyi.pulzator.users;
 
-import com.github.szsalyi.pulzator.role.Role;
-import com.github.szsalyi.pulzator.role.RoleName;
-import com.github.szsalyi.pulzator.role.RoleRepository;
+import com.github.szsalyi.pulzator.roles.Role;
+import com.github.szsalyi.pulzator.roles.RoleName;
+import com.github.szsalyi.pulzator.roles.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

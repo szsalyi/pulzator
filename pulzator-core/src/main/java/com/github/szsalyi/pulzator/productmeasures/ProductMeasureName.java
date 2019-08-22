@@ -1,4 +1,4 @@
-package com.github.szsalyi.pulzator.products;
+package com.github.szsalyi.pulzator.productmeasures;
 
 public enum ProductMeasureName {
     LITER,

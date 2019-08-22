@@ -1,4 +1,4 @@
-package com.github.szsalyi.pulzator.role;
+package com.github.szsalyi.pulzator.roles;
 
 public enum RoleName {
     ROLE_ADMIN,

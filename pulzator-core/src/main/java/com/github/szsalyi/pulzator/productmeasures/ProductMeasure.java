@@ -1,26 +1,26 @@
-package com.github.szsalyi.pulzator.role;
+package com.github.szsalyi.pulzator.productmeasures;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.GenerationType;
-import javax.persistence.Enumerated;
-import javax.persistence.EnumType;
-import javax.persistence.Column;
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ROLE")
-public class Role implements Serializable {
+@Table(name = "PRODUCT_MEASURE")
+public class ProductMeasure implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,9 +31,6 @@ public class Role implements Serializable {
     @Enumerated(EnumType.STRING)
     @NaturalId
     @Column(name = "rolename", length = 60)
-    private RoleName name;
+    private ProductMeasureName name;
 
-    public  Role(final RoleName roleName) {
-        this.name = roleName;
-    }
 }

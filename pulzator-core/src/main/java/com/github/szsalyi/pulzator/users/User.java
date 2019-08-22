@@ -1,7 +1,7 @@
 package com.github.szsalyi.pulzator.users;
 
 import com.github.szsalyi.pulzator.common.audit.DateAudit;
-import com.github.szsalyi.pulzator.role.Role;
+import com.github.szsalyi.pulzator.roles.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

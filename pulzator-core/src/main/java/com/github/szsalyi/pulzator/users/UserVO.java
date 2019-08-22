@@ -1,6 +1,6 @@
 package com.github.szsalyi.pulzator.users;
 
-import com.github.szsalyi.pulzator.role.Role;
+import com.github.szsalyi.pulzator.roles.Role;
 import lombok.Data;
 
 import java.io.Serializable;

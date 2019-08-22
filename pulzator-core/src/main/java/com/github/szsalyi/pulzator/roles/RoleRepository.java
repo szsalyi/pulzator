@@ -1,4 +1,4 @@
-package com.github.szsalyi.pulzator.role;
+package com.github.szsalyi.pulzator.roles;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
