@@ -1,5 +1,6 @@
 package com.github.szsalyi.pulzator.users;
 
+import com.github.szsalyi.pulzator.common.audit.DateAudit;
 import com.github.szsalyi.pulzator.role.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,7 +38,7 @@ import java.util.Set;
                 "email"
         })
 })
-public class User {
+public class User extends DateAudit {
     private static final Long serialVersionUID = 1L;
 
     @Id
@@ -47,7 +48,7 @@ public class User {
     @NotBlank
     @Size(max = 40)
     @Column(name = "USERNAME", nullable = false)
-    private String userName;
+    private String username;
 
     @NotBlank
     @Size(max = 40)

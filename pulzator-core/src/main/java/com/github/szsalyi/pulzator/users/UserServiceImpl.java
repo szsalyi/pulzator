@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Optional;
 
 
 @Service
@@ -22,6 +23,11 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
+    public Optional<UserVO> findById(final Long id) {
+        return Optional.of(userMapper.toVO(userRepository.findById(id).get()));
+    }
+
+    @Override
     public UserVO save(final UserVO userVO) throws Exception {
         User userEntity = userMapper.toEntity(userVO);
 
@@ -35,6 +41,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO findByEmail(final String email) {
         return userMapper.toVO(userRepository.findByEmail(email));
+    }
+
+    @Override
+    public Optional<UserVO> findByUsernameOrEmail(final String usernameOrEmail) {
+        return Optional.of(userMapper.toVO(userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)));
     }
 }
 

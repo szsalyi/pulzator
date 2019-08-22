@@ -50,6 +50,7 @@
 
         <version.mysql>8.0.17</version.mysql>
         <version.hibernate>5.4.4.Final</version.hibernate>
+        <version.querydsl>4.2.1</version.querydsl>
 
         <version.spring.boot>2.1.7.RELEASE</version.spring.boot>
 

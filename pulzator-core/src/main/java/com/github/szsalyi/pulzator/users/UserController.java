@@ -28,7 +28,7 @@ public class UserController {
 
     @PostMapping(consumes = MediaType.ALL_VALUE)
     public ResponseEntity<UserVO> saveUser(final @RequestBody UserVO user) throws Exception {
-        user.setRole(new HashSet<>(Arrays.asList(new Role(RoleName.ROLE_EMPLOYEE))));
+        user.setRoles(new HashSet<>(Arrays.asList(new Role(RoleName.ROLE_EMPLOYEE))));
         user.setEnabled(true);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
@@ -43,8 +43,8 @@ public class UserController {
     }
 
     @GetMapping(path = "/exists", consumes = MediaType.ALL_VALUE)
-    public ResponseEntity<Boolean> getUser(@RequestParam final String email) {
-        if (userService.findByEmail(email) != null) {
+    public ResponseEntity<Boolean> getUser(@RequestParam final String usernameOrEmail) {
+        if (userService.findByUsernameOrEmail(usernameOrEmail).isPresent()) {
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
