@@ -5,7 +5,6 @@ import com.github.szsalyi.pulzator.common.audit.DateAudit;
 import com.github.szsalyi.pulzator.products.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -24,7 +23,6 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 public class Category extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
