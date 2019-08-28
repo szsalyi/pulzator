@@ -48,7 +48,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable("id") final Long id) throws Exception {
+    public void deleteProduct(@PathVariable final Long id) throws Exception {
         productService.delete(id);
     }
 
@@ -59,35 +59,11 @@ public class ProductController {
         return optionalProduct.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-   /* @PostMapping("/search")
-    //example: http://localhost:8080/products/search?size=2&page=1&sort=price,desc
-    @ApiImplicitParams({
-            @ApiImplicitParam(name="page", dataTypeClass = Integer.class, paramType = "query", defaultValue = "0" ),
-            @ApiImplicitParam(name="size", dataTypeClass = Integer.class, paramType = "query", defaultValue = "5"),
-            @ApiImplicitParam(name="sort", dataType = "string", paramType = "query", allowMultiple = true)
-    })
-    public List<Product> searchProducts(@RequestBody Product product, @ApiIgnore Pageable pageable){
-        return productService.searchProducts(product, pageable);
-    }*/
+    @GetMapping("/name/{name}")
+    public ResponseEntity<ProductVO> getProductByName(@PathVariable("name") final String name) throws Exception {
+        Optional<ProductVO> optionalProduct = productService.loadByName(name);
 
-    /*@PostMapping("/search2")
-    public List<Product> searchProducts2(
-            @RequestBody @Validated(Search.class) Product product,
-            Pageable pageable){
-        return productService.searchProducts2(product, pageable);
-    }*/
+        return optionalProduct.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
-    /*@PostMapping("/search3")
-    public List<Product> searchProducts3(
-            @RequestBody @Validated(Search.class) Product product,
-            Pageable pageable){
-        return productService.searchProducts3(product, pageable);
-    }*/
-
-   /* @GetMapping("/search4")
-    public List<Product> searchProducts4(
-            @QuerydslPredicate(root = Product.class) Predicate predicate,
-            Pageable pageable){
-        return productService.findAll(predicate, pageable).getContent();
-    }*/
 }

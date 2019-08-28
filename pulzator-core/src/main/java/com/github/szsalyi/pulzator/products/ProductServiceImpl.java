@@ -2,7 +2,6 @@ package com.github.szsalyi.pulzator.products;
 
 import com.github.szsalyi.pulzator.categories.CategoryService;
 import com.github.szsalyi.pulzator.categories.CategoryVO;
-import com.github.szsalyi.pulzator.common.mapping.CycleAvoidingContextMapping;
 import com.github.szsalyi.pulzator.productmeasures.ProductMeasureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,11 +27,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductVO save(final ProductVO productVO) {
-        Product product = ProductMapper.INSTANCE.toEntity(productVO, new CycleAvoidingContextMapping());
+        Product product = productMapper.toEntity(productVO);
         product.setProductMeasure(productMeasureRepository
                 .findById(productVO.getProductMeasure().getId()).get());
 
-        ProductVO savedProduct = ProductMapper.INSTANCE.toVO(productRepository.save(product), new CycleAvoidingContextMapping());
+        ProductVO savedProduct = productMapper.toVO(productRepository.save(product));
 
         CategoryVO categoryVO = categoryService.getById(productVO.getCategory().getId());
         savedProduct.setCategory(categoryVO);
@@ -53,18 +52,18 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void delete(final ProductVO productVO) {
-        productRepository.delete(ProductMapper.INSTANCE.toEntity(productVO, new CycleAvoidingContextMapping()));
+        productRepository.delete(productMapper.toEntity(productVO));
     }
 
     @Override
     public Optional<ProductVO> loadById(final Long id) {
-        return Optional.of(ProductMapper.INSTANCE.toVO(productRepository.findById(id).get(), new CycleAvoidingContextMapping()));
+        return Optional.of(productMapper.toVO(productRepository.findById(id).get()));
     }
 
     @Override
     public Optional<ProductVO> loadByName(final String name) throws Exception {
-        return Optional.of(ProductMapper.INSTANCE.toVO(productRepository.findByName(name)
-                .orElseThrow(Exception::new), new CycleAvoidingContextMapping()));
+        return Optional.of(productMapper.toVO(productRepository.findByName(name)
+                .orElseThrow(Exception::new)));
     }
 
     @Override
@@ -72,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
         List<Product> products = productRepository.findByProductMeasureName(categoryName);
 
         return products.stream()
-                .map(p -> ProductMapper.INSTANCE.toVO(p, new CycleAvoidingContextMapping()))
+                .map(p -> productMapper.toVO(p))
                 .collect(Collectors.toList());
     }
 

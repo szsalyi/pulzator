@@ -6,6 +6,6 @@ public interface CategoryService {
 
     CategoryVO getById(Long id);
     CategoryVO save(CategoryVO categoryVO);
-    void delete(CategoryVO categoryVO);
+    void delete(Long id);
     List<CategoryVO> getAll();
 }

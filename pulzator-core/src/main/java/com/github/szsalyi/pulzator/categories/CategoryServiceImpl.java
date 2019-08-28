@@ -30,8 +30,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void delete(final CategoryVO categoryVO) {
-        categoryVO.getProducts().forEach(p -> productService.delete(p));
+    public void delete(final Long id) {
+        CategoryVO categoryVO = this.getById(id);
+        categoryVO.getProducts().forEach(p ->
+                productService.delete(p));
 
         categoryRepository.delete(categoryMapper.toEntity(categoryVO));
     }
