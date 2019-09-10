@@ -27,4 +27,11 @@ export class ProductComponent implements OnInit {
     this.productService.getProducts()
       .subscribe(products => this.products = products);
   }
+
+  add(name: string,quantity: string,enabled: string,price: string): void {
+    let newProduct = new Product(name, Number.parseInt(quantity) ,(enabled =="true") , Number.parseInt(price));
+    if (!newProduct) { return; }
+    this.productService.addProduct(newProduct)
+      .subscribe(p => this.products.push(p));
+  }
 }

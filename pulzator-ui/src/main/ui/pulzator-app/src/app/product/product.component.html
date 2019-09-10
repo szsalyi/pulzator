@@ -1,5 +1,18 @@
 <h2>Products</h2>
 
+<div>
+  <label>
+    Product Name:
+    <input #productName />
+    <input #productQuantity />
+    <input #productEnabled />
+    <input #productPrice />
+  </label>
+  <button (click)="add(productName.value, productQuantity.value, productEnabled.value, productPrice.value);">
+    add
+  </button>
+</div>
+
 <ul class="products">
   <li *ngFor="let product of products">
 <!--
@@ -8,11 +21,10 @@
       (click)="onSelect(product)">
 -->
     <a routerLink="/detail/{{product.id}}">
-      <span class="badge">{{product.id}}</span>{{product.name}}
+      <span class="badge">{{product.id}}</span>
+      <span>{{product.name}}</span>
     </a>
   </li>
-</ul>
-
 <!--
 <app-product-detail [product] ="selectedProduct"></app-product-detail>
 -->

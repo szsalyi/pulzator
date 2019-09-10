@@ -3,9 +3,20 @@
   <h2>{{product.name | uppercase}} Details</h2>
   <div><span>id: </span>{{product.id}}</div>
   <div>
+    <span>{{product.name}}</span>
+    <span>{{product.category_id}}</span>
+    <span>{{product.price}}</span>
+    <span>{{product.quantity}}</span>
+    <span>{{product.created_at}}</span>
+    <span>{{product.updated_at}}</span>
+    <span>{{product.enabled}}</span>
+    <span>{{product.product_measure_id}}</span>
+  </div>
+  <div>
     <label>name:
       <input [(ngModel)]="product.name" placeholder="name"/>
     </label>
   </div>
   <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
 </div>
