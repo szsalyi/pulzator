@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { Product } from "./product";
 import { ProductService } from "../product.service";
+=======
+>>>>>>> master
 
+import { Product } from "./product";
+import { ProductService } from "../product.service";
 
 @Component({
   selector: 'app-product',
@@ -12,7 +17,11 @@ export class ProductComponent implements OnInit {
 
   products: Product[];
 
+<<<<<<< HEAD
   /*selectedProduct: Product;
+=======
+ /* selectedProduct: Product;
+>>>>>>> master
   onSelect(product: Product): void {
     this.selectedProduct = product;
   }*/

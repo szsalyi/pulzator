@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ProductComponent } from "./product/product.component";
+<<<<<<< HEAD
 import { DashboardComponent } from "./dashboard/dashboard.component";
+=======
+import { DashboardComponent} from "./dashboard/dashboard.component";
+>>>>>>> master
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 
 const routes: Routes =  [

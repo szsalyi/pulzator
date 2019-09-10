@@ -1,4 +1,4 @@
-<h2>Products</h2>
+<link rel="stylesheet" href="../product-detail/product-detail.component.css"><h2>Products</h2>
 
 <div>
   <label>
@@ -15,6 +15,7 @@
 
 <ul class="products">
   <li *ngFor="let product of products">
+<<<<<<< HEAD
 <!--
       [class.selected]="product === selectedProduct"
 
@@ -31,3 +32,12 @@
 
 
 
+=======
+    <!--[class.selected]="product === selectedProduct"
+      (click)="onSelect(product)">-->
+    <a routerLink="/detail/{{product.id}}">
+      <span class="badge">{{product.id}}</span>{{product.name}}
+    </a>
+  </li>
+</ul>
+>>>>>>> master

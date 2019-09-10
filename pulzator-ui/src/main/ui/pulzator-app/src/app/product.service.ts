@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Product} from "./product/product";
+
+import { Observable, of } from "rxjs";
+
+import { Product } from "./product/product";
 import { PRODUCTS} from "./mock-products";
+<<<<<<< HEAD
 import { Observable, of } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
+=======
+>>>>>>> master
 import { MessageService } from "./message.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
@@ -77,5 +83,11 @@ export class ProductService {
 
   private log(message: string) {
     this.messageService.add('ProductService: ${message}');
+  }
+
+  getProduct(id: number): Observable<Product> {
+    // TODO: send message _after_ fetching the product
+    this.messageService.add('ProductService: fetched product id = ${id');
+    return of(PRODUCTS.find(product => product.id === id));
   }
 }
