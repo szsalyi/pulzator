@@ -2,6 +2,7 @@ package com.github.szsalyi.pulzator.products;
 
 import com.github.szsalyi.pulzator.categories.CategoryService;
 import com.github.szsalyi.pulzator.categories.CategoryVO;
+import com.github.szsalyi.pulzator.productmeasures.ProductMeasure;
 import com.github.szsalyi.pulzator.productmeasures.ProductMeasureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,15 +28,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductVO save(final ProductVO productVO) {
-        Product product = productMapper.toEntity(productVO);
-        product.setProductMeasure(productMeasureRepository
-                .findById(productVO.getProductMeasure().getId()).get());
-
-        ProductVO savedProduct = productMapper.toVO(productRepository.save(product));
-
         CategoryVO categoryVO = categoryService.getById(productVO.getCategory().getId());
-        savedProduct.setCategory(categoryVO);
-        return savedProduct;
+        productVO.setCategory(categoryVO);
+        ProductMeasure productMeasure = productMeasureRepository.findById(productVO.getProductMeasure().getId()).get();
+        productVO.setProductMeasure(productMeasure);
+        Product product = productMapper.toEntity(productVO);
+
+        return productMapper.toVO(productRepository.save(product));
     }
 
     @Override

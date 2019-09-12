@@ -4,11 +4,9 @@ import { Observable, of } from "rxjs";
 
 import { Product } from "./product/product";
 import { PRODUCTS} from "./mock-products";
-<<<<<<< HEAD
-import { Observable, of } from "rxjs";
+
 import { catchError, map, tap } from "rxjs/operators";
-=======
->>>>>>> master
+
 import { MessageService } from "./message.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
@@ -76,18 +74,28 @@ export class ProductService {
 
   addProduct(product: Product): Observable<Product> {
     return this.http.post(this.productUrl, product, this.httpOptions).pipe(
-      tap((newPorduct: Product) => this.log(`added product w/ id=${product.id} and name=${product.name}`)),
+      tap((newPorduct: Product) => this.log(`added product w/ id=${newPorduct.id} and name=${newPorduct.name} product measure id=${newPorduct.product_measure}`)),
       catchError(this.handleError<Product>('addProduct'))
     );
   }
 
-  private log(message: string) {
-    this.messageService.add('ProductService: ${message}');
+  deleteProduct(product: Product): Observable<Product> {
+    const id = typeof product === 'number' ? product : product.id;
+    const url = `${this.productUrl}/${id}`;
+
+    return this.http.delete<Product>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted product id=${id}`)),
+      catchError(this.handleError<Product>('deleteProduct'))
+    );
   }
 
-  getProduct(id: number): Observable<Product> {
+  private log(message: string) {
+    this.messageService.add(`ProductService: ${message}`);
+  }
+
+  /*getProduct(id: number): Observable<Product> {
     // TODO: send message _after_ fetching the product
     this.messageService.add('ProductService: fetched product id = ${id');
     return of(PRODUCTS.find(product => product.id === id));
-  }
+  }*/
 }

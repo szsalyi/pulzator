@@ -8,34 +8,34 @@
 		Defines the rules The Hoff cared about
 	</description>
 
-	<rule ref="category/java/errorprone.xml/AvoidBranchingStatementAsLastInLoop"/>
-	<rule ref="category/java/errorprone.xml/AvoidDecimalLiteralsInBigDecimalConstructor" />
-	<rule ref="category/java/errorprone.xml/AvoidMultipleUnaryOperators" />
-	<rule ref="category/java/errorprone.xml/AvoidUsingOctalValues" />
-	<rule ref="category/java/errorprone.xml/BrokenNullCheck" />
-	<rule ref="category/java/errorprone.xml/CheckSkipResult" />
-	<rule ref="category/java/errorprone.xml/ClassCastExceptionWithToArray" />
-	<rule ref="category/java/errorprone.xml/DontUseFloatTypeForLoopIndices" />
-	<rule ref="category/java/errorprone.xml/JumbledIncrementer" />
-	<rule ref="category/java/errorprone.xml/MisplacedNullCheck" />
-	<rule ref="category/java/errorprone.xml/OverrideBothEqualsAndHashcode" />
-	<rule ref="category/java/errorprone.xml/ReturnFromFinallyBlock" />
-	<rule ref="category/java/errorprone.xml/UnconditionalIfStatement" />
+	<rule ref="category.ts/java/errorprone.xml/AvoidBranchingStatementAsLastInLoop"/>
+	<rule ref="category.ts/java/errorprone.xml/AvoidDecimalLiteralsInBigDecimalConstructor" />
+	<rule ref="category.ts/java/errorprone.xml/AvoidMultipleUnaryOperators" />
+	<rule ref="category.ts/java/errorprone.xml/AvoidUsingOctalValues" />
+	<rule ref="category.ts/java/errorprone.xml/BrokenNullCheck" />
+	<rule ref="category.ts/java/errorprone.xml/CheckSkipResult" />
+	<rule ref="category.ts/java/errorprone.xml/ClassCastExceptionWithToArray" />
+	<rule ref="category.ts/java/errorprone.xml/DontUseFloatTypeForLoopIndices" />
+	<rule ref="category.ts/java/errorprone.xml/JumbledIncrementer" />
+	<rule ref="category.ts/java/errorprone.xml/MisplacedNullCheck" />
+	<rule ref="category.ts/java/errorprone.xml/OverrideBothEqualsAndHashcode" />
+	<rule ref="category.ts/java/errorprone.xml/ReturnFromFinallyBlock" />
+	<rule ref="category.ts/java/errorprone.xml/UnconditionalIfStatement" />
 
-	<rule ref="category/java/multithreading.xml/AvoidThreadGroup" />
-	<rule ref="category/java/multithreading.xml/DontCallThreadRun" />
-	<rule ref="category/java/multithreading.xml/DoubleCheckedLocking" />
+	<rule ref="category.ts/java/multithreading.xml/AvoidThreadGroup" />
+	<rule ref="category.ts/java/multithreading.xml/DontCallThreadRun" />
+	<rule ref="category.ts/java/multithreading.xml/DoubleCheckedLocking" />
 
-	<rule ref="category/java/bestpractices.xml/AvoidUsingHardCodedIP" />
-	<rule ref="category/java/bestpractices.xml/CheckResultSet" />
+	<rule ref="category.ts/java/bestpractices.xml/AvoidUsingHardCodedIP" />
+	<rule ref="category.ts/java/bestpractices.xml/CheckResultSet" />
 
-	<rule ref="category/java/codestyle.xml/ExtendsObject" />
-	<rule ref="category/java/codestyle.xml/ForLoopShouldBeWhileLoop" />
+	<rule ref="category.ts/java/codestyle.xml/ExtendsObject" />
+	<rule ref="category.ts/java/codestyle.xml/ForLoopShouldBeWhileLoop" />
 
-	<rule ref="category/java/performance.xml/BigIntegerInstantiation" />
-	<rule ref="category/java/performance.xml/BooleanInstantiation" />
+	<rule ref="category.ts/java/performance.xml/BigIntegerInstantiation" />
+	<rule ref="category.ts/java/performance.xml/BooleanInstantiation" />
 
-	<!--    <rule ref="category/java/design.xml/CollapsibleIfStatements" /> -->
-	<rule ref="category/java/design.xml/SimplifiedTernary" />
+	<!--    <rule ref="category.ts/java/design.xml/CollapsibleIfStatements" /> -->
+	<rule ref="category.ts/java/design.xml/SimplifiedTernary" />
 
 </ruleset>
