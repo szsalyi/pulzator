@@ -11,6 +11,7 @@ public interface ProductService {
     void delete(ProductVO productVO);
     Optional<ProductVO> loadById(Long id) throws Exception;
     Optional<ProductVO> loadByName(String name) throws Exception;
+    Optional<List<ProductVO>> loadByNameContaning(String name) throws Exception;
     List<ProductVO> loadByCategory(String categoryName);
     List<ProductVO> loadAll();
 }

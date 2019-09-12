@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -59,11 +60,10 @@ public class ProductController {
         return optionalProduct.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<ProductVO> getProductByName(@PathVariable("name") final String name) throws Exception {
-        Optional<ProductVO> optionalProduct = productService.loadByName(name);
+    @GetMapping("/")
+    public ResponseEntity<List<ProductVO>> getProductByName(@RequestParam("name") final String name) throws Exception {
+        Optional<List<ProductVO>> optionalProduct = productService.loadByNameContaning(name);
 
         return optionalProduct.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-
 }

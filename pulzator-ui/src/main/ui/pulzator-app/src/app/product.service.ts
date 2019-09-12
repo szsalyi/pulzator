@@ -74,7 +74,7 @@ export class ProductService {
 
   addProduct(product: Product): Observable<Product> {
     return this.http.post(this.productUrl, product, this.httpOptions).pipe(
-      tap((newPorduct: Product) => this.log(`added product w/ id=${newPorduct.id} and name=${newPorduct.name} product measure id=${newPorduct.product_measure}`)),
+      tap((newPorduct: Product) => this.log(`added product w/ id=${newPorduct.id} and name=${newPorduct.name} product measure id=${newPorduct.productMeasure}`)),
       catchError(this.handleError<Product>('addProduct'))
     );
   }
@@ -86,6 +86,17 @@ export class ProductService {
     return this.http.delete<Product>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted product id=${id}`)),
       catchError(this.handleError<Product>('deleteProduct'))
+    );
+  }
+
+  searchProduct(term: string): Observable<Product[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+
+    return this.http.get<Product[]>(`${this.productUrl}/?name=${term}`, this.httpOptions).pipe(
+      tap(_ => this.log(`found heroes matching "${term}"`)),
+      catchError(this.handleError<Product[]>('searchProducts', []))
     );
   }
 

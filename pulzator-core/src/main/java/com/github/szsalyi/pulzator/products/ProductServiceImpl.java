@@ -66,6 +66,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Optional<List<ProductVO>>loadByNameContaning(String name) throws Exception {
+        List<Product> result = productRepository.findByNameContaining(name);
+        return Optional.of(productMapper.productsToVo(result));
+    }
+
+    @Override
     public List<ProductVO> loadByCategory(final String categoryName) {
         List<Product> products = productRepository.findByProductMeasureName(categoryName);
 

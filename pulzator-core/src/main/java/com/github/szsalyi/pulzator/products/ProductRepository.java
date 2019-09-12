@@ -12,4 +12,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("SELECT p FROM Product p WHERE LOWER(p.productMeasure.name) = LOWER(:productMeasureName)")
     List<Product> findByProductMeasureName(String productMeasureName);
+
+    List<Product> findByNameContaining(String name);
 }
