@@ -1,11 +1,13 @@
+import {Product} from "../product/product";
+
 export class Category {
   id: number;
   name: string;
+  products: Product[];
 
-
-  constructor(id: number, name?: string) {
-    this.id = id;
+  constructor(name?: string, products?: Product[]) {
     this.name = name;
+    this.products = products;
   }
 
 }

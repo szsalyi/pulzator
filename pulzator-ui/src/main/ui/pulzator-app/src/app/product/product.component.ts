@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Product } from "./product";
 import { ProductService } from "../product.service";
-import {ProductMeasure} from "./product_measure";
-import {Category} from "../categories/category";
+import { ProductMeasure } from "./product_measure";
+import { Category } from "../categories/category";
 
 @Component({
   selector: 'app-product',
@@ -32,7 +32,8 @@ export class ProductComponent implements OnInit {
   }
 
   add(name: string,quantity: string,enabled: string,price: string): void {
-    let category = new Category(2);
+    let category = new Category;
+    category.id = 2;
 
     let newProduct = new Product(name, Number.parseInt(quantity) ,(enabled == "true") , Number.parseInt(price), category);
 

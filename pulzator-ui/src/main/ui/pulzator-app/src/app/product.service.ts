@@ -25,7 +25,7 @@ export class ProductService {
     private messageService: MessageService
   ) { }
 
-  /*getProducts(): Observable<Product[]> {
+  /*getCategories(): Observable<Product[]> {
     this.messageService.add("ProductService: fetch product");
     return of(PRODUCTS);
   }*/
@@ -95,7 +95,7 @@ export class ProductService {
     }
 
     return this.http.get<Product[]>(`${this.productUrl}/?name=${term}`, this.httpOptions).pipe(
-      tap(_ => this.log(`found heroes matching "${term}"`)),
+      tap(_ => this.log(`found products matching "${term}"`)),
       catchError(this.handleError<Product[]>('searchProducts', []))
     );
   }
@@ -104,7 +104,7 @@ export class ProductService {
     this.messageService.add(`ProductService: ${message}`);
   }
 
-  /*getProduct(id: number): Observable<Product> {
+  /*getCategory(id: number): Observable<Product> {
     // TODO: send message _after_ fetching the product
     this.messageService.add('ProductService: fetched product id = ${id');
     return of(PRODUCTS.find(product => product.id === id));
