@@ -52,6 +52,9 @@
         <version.hibernate>5.4.4.Final</version.hibernate>
         <version.querydsl>4.2.1</version.querydsl>
 
+        <version.jsonwebtoken>0.9.1</version.jsonwebtoken>
+
+        <version.spring.mobile>1.1.5.RELEASE</version.spring.mobile>
         <version.spring.boot>2.1.7.RELEASE</version.spring.boot>
 
         <version.compiler>3.8.1</version.compiler>
@@ -186,7 +189,7 @@
                                 </execution>
                             </executions>
                         </plugin>
-                        <plugin>
+               <!--         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-pmd-plugin</artifactId>
                             <executions>
@@ -199,7 +202,7 @@
                                     </goals>
                                 </execution>
                             </executions>
-                        </plugin>
+                        </plugin>-->
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>findbugs-maven-plugin</artifactId>

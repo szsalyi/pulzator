@@ -1,10 +1,9 @@
 server:
     port: 8080
-    server:
-        servlet:
-            contextPath: /pulzator
 
 spring:
+#    mvc:
+#        dispatch-options-request: true
     profiles:
         active: prod
     jpa:

@@ -11,6 +11,16 @@ spring:
         username: root
         password: rooz
 
+
+jwt:
+    header: Authorization
+    secret: mySecret
+    expiration: 604800
+    route:
+        authentication:
+            path: auth
+            refresh: refresh
+
 ## Hibernate Logging
 ##logging:
 ##    level:

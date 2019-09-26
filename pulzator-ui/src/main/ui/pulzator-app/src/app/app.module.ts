@@ -12,6 +12,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CategoriesComponent } from './categories/categories.component';
     MessagesComponent,
     DashboardComponent,
     ProductSearchComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

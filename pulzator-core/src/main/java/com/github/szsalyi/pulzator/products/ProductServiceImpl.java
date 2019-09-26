@@ -66,7 +66,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<List<ProductVO>>loadByNameContaning(String name) throws Exception {
+    public Optional<List<ProductVO>> loadByNameContaining(final String name) throws Exception {
         List<Product> result = productRepository.findByNameContaining(name);
         return Optional.of(productMapper.productsToVo(result));
     }

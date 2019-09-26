@@ -62,7 +62,7 @@ public class ProductController {
 
     @GetMapping("/")
     public ResponseEntity<List<ProductVO>> getProductByName(@RequestParam("name") final String name) throws Exception {
-        Optional<List<ProductVO>> optionalProduct = productService.loadByNameContaning(name);
+        Optional<List<ProductVO>> optionalProduct = productService.loadByNameContaining(name);
 
         return optionalProduct.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }

@@ -13,8 +13,13 @@ export class CategoryService {
   private categoryUrl = 'http://localhost:8080/api/categories';
   private headers = { headers: new HttpHeaders({ 'Content-Type' : 'application/json'})};
   private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
+  private httpDeleteOptions = {
+    headers: new HttpHeaders({'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'DELETE',
+  'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type'}
+  )};
 
   constructor(
     private http: HttpClient,

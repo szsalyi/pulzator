@@ -22,10 +22,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
         config.addAllowedOrigin("*");
-        config.addAllowedMethod("*");
         config.addAllowedHeader("*");
-        //source.registerCorsConfiguration("/v2/api-docs", config);
+        config.addAllowedMethod("OPTIONS");
+        config.addAllowedMethod("DELETE");
+        config.addAllowedMethod("GET");
+        config.addAllowedMethod("POST");
+        config.addAllowedMethod("PUT");
+        source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
 }
