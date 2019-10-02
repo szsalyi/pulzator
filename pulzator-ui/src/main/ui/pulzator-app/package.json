@@ -20,7 +20,10 @@
     "@angular/platform-browser": "~8.2.4",
     "@angular/platform-browser-dynamic": "~8.2.4",
     "@angular/router": "~8.2.4",
+    "@auth0/angular-jwt": "^1.2.0",
+    "jwt-decode": "^2.2.0",
     "rxjs": "~6.4.0",
+    "rxjs-compat": "^6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

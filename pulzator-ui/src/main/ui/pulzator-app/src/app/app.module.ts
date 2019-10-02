@@ -13,6 +13,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import {AuthenticationService} from "./authentication.service";
+import { JwtModule } from "@auth0/angular-jwt";
+
+export function tokenGetter() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  return currentUser && currentUser.token;
+}
 
 @NgModule({
   declarations: [
@@ -23,15 +32,22 @@ import { HomeComponent } from './home/home.component';
     DashboardComponent,
     ProductSearchComponent,
     CategoriesComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4200']
+      }
+    })
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

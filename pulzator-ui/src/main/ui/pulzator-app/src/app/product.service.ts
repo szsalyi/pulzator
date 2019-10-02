@@ -3,32 +3,28 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from "rxjs";
 
 import { Product } from "./product/product";
-import { PRODUCTS} from "./mock-products";
 
 import { catchError, map, tap } from "rxjs/operators";
 
 import { MessageService } from "./message.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {AuthenticationService} from "./authentication.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   private productUrl = 'http://localhost:8080/api/products';
-  private headers = { headers: new HttpHeaders({ 'Content-Type' : 'application/json'})};
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+
+  private headers = { headers: new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization': 'Bearer ' + this.authService.getToken()})};
 
   constructor(
     private http: HttpClient,
+    private authService: AuthenticationService,
     private messageService: MessageService
   ) { }
-
-  /*getCategories(): Observable<Product[]> {
-    this.messageService.add("ProductService: fetch product");
-    return of(PRODUCTS);
-  }*/
 
   getProducts(): Observable<Product[]> {
     this.messageService.add("ProductService: fetch product");
@@ -55,25 +51,14 @@ export class ProductService {
   updateProduct(product: Product): Observable<any> {
     this.messageService.add(`ProductService update product id=${product.id} name=${product.name}`);
 
-    return this.http.post(this.productUrl, product, this.httpOptions).pipe(
+    return this.http.post(this.productUrl, product, this.headers).pipe(
       tap(_ => this.log(`update product id=${product.id} name=${product.name}`),
       catchError(this.handleError<any>(`updateProduct`)))
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error);
-
-      this.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    }
-  }
-
   addProduct(product: Product): Observable<Product> {
-    return this.http.post(this.productUrl, product, this.httpOptions).pipe(
+    return this.http.post(this.productUrl, product, this.headers).pipe(
       tap((newPorduct: Product) => this.log(`added product w/ id=${newPorduct.id} and name=${newPorduct.name} product measure id=${newPorduct.productMeasure}`)),
       catchError(this.handleError<Product>('addProduct'))
     );
@@ -83,7 +68,7 @@ export class ProductService {
     const id = typeof product === 'number' ? product : product.id;
     const url = `${this.productUrl}/${id}`;
 
-    return this.http.delete<Product>(url, this.httpOptions).pipe(
+    return this.http.delete<Product>(url, this.headers).pipe(
       tap(_ => this.log(`deleted product id=${id}`)),
       catchError(this.handleError<Product>('deleteProduct'))
     );
@@ -94,10 +79,18 @@ export class ProductService {
       return of([]);
     }
 
-    return this.http.get<Product[]>(`${this.productUrl}/?name=${term}`, this.httpOptions).pipe(
+    return this.http.get<Product[]>(`${this.productUrl}/?name=${term}`, this.headers).pipe(
       tap(_ => this.log(`found products matching "${term}"`)),
       catchError(this.handleError<Product[]>('searchProducts', []))
     );
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      this.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    }
   }
 
   private log(message: string) {

@@ -3,6 +3,7 @@ import { Product } from "../product/product";
 import { ProductService } from "../product.service";
 import {CategoryService} from "../category.service";
 import {Category} from "../categories/category";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,8 @@ export class DashboardComponent implements OnInit {
   products: Product[] = [];
   categories: Category[] = [];
 
-  constructor(private productService: ProductService,
+  constructor(private router: Router,
+              private productService: ProductService,
               private categoryService: CategoryService) {}
 
   ngOnInit() {

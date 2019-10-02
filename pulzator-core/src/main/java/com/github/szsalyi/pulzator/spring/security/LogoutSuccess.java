@@ -12,7 +12,6 @@ import java.io.IOException;
 @Component
 public class LogoutSuccess implements LogoutSuccessHandler {
 
-
     @Override
     public void onLogoutSuccess(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse, final Authentication authentication)
             throws IOException, ServletException {
@@ -25,5 +24,4 @@ public class LogoutSuccess implements LogoutSuccessHandler {
         }
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
     }
-
 }
