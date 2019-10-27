@@ -1,3 +1,16 @@
+@import '~normalize.css';
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;}
+
 .delete {
   margin-left: 120px;
+}
+
+image {
+  opacity: 50%;
 }

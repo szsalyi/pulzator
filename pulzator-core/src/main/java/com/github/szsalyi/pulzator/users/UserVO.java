@@ -4,6 +4,7 @@ import com.github.szsalyi.pulzator.roles.Role;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -18,5 +19,6 @@ public class UserVO implements Serializable {
     private String password;
     private String email;
     private boolean enabled;
+    private Date lastPasswordResetDate;
     private Set<Role> roles;
 }

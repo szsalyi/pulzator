@@ -10,7 +10,7 @@ import {AuthRequest} from "./AuthRequest";
 export class LoginComponent implements OnInit {
   model: any = {};
   loading = false;
-  error = '';
+  error = 'A felhasználó név vagy a jelszó helytelen!';
 
   constructor(
     private router: Router,

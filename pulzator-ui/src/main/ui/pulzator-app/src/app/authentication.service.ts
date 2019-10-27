@@ -6,10 +6,12 @@ import {AuthRequest} from "./login/AuthRequest";
 import {catchError, map, tap} from "rxjs/operators";
 import {AuthResponse} from "./login/AuthResponse";
 import {JwtHelperService} from "@auth0/angular-jwt";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthenticationService {
   private authUrl = 'http://localhost:8080/auth';
+  private logoutUrl = '';
   private headers = { headers: new HttpHeaders({ 'Content-Type' : 'application/json'})};
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -18,7 +20,8 @@ export class AuthenticationService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    private jwtHelper: JwtHelperService
+    private jwtHelper: JwtHelperService,
+    private router: Router
   ) { }
 
   login(authRequest: AuthRequest): Observable<boolean> {
@@ -51,6 +54,7 @@ export class AuthenticationService {
 
   logout(): void {
     localStorage.removeItem('currentUser');
+    this.router.navigate(['/login'])
   }
 
   private log(message: string) {

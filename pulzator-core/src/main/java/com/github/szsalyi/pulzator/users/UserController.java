@@ -1,7 +1,5 @@
 package com.github.szsalyi.pulzator.users;
 
-import com.github.szsalyi.pulzator.roles.Role;
-import com.github.szsalyi.pulzator.roles.RoleName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Date;
 
 @RestController
 @RequestMapping(path = "/api/users",
@@ -28,9 +25,7 @@ public class UserController {
 
     @PostMapping(consumes = MediaType.ALL_VALUE)
     public ResponseEntity<UserVO> saveUser(final @RequestBody UserVO user) throws Exception {
-        user.setRoles(new HashSet<>(Arrays.asList(new Role(RoleName.ROLE_EMPLOYEE))));
-        user.setEnabled(true);
-
+        user.setLastPasswordResetDate(new Date());
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 

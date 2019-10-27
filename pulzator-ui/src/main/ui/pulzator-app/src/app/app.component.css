@@ -1,4 +1,8 @@
 /* AppComponent's private CSS styles */
+body{
+  display: flex;
+}
+
 h1 {
   font-size: 1.2em;
   margin-bottom: 0;

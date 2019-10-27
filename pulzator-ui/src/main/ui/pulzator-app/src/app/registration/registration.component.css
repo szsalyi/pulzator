@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+div[ui-view]{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.registration-form{
+  display: flex;
+  padding-left: 35px;
+  padding-bottom: 15px;
+  padding-right: 25px;
+  padding-top: 15px;
+  width: 400px;
+  -webkit-box-shadow: 0px 7px 19px 0px rgba(0,0,0,0.19);
+  -moz-box-shadow: 0px 7px 19px 0px rgba(0,0,0,0.19);
+  box-shadow: 0px 7px 19px 0px rgba(0,0,0,0.19);
+  flex-direction: column;
+}
+
+.header-field{
+  font-family: "Oswald";
+  font-size: 26px;
+  font-weight: 300;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.details-field {
+  font-family: "Oswald";
+  font-size: 20px;
+  font-weight: 300;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-field{
+  border: 1.5px solid #81d4fa;
+  line-height: 2em;
+  padding-left: 5px;
+  font-family: "Oswald";
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.red{
+  color: red;
+}
+
+.information{
+  font-family: "Oswald";
+  font-size: 15px;
+  font-weight: 300;
+  align-self: flex-end;
+  margin: 10px 0px;
+  display: none;
+}
+
+#submit:hover{
+  background-color: #1E88E5;
+  cursor: pointer;
+}
+
+#submit{
+  font-family: "Oswald";
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  background-color: #81d4fa;
+  border: none;
+  margin-top: 10px;
+  padding: 10px 35px;
+  align-self: flex-end;
+}
+
+meter{
+  margin: 0;
+}
+
+#meter-field{
+  position: absolute;
+  margin-left: 350px;
+  border: 2px solid #81d4fa;
+  border-radius: 6px;
+  background-color: white;
+}
+
+#meter-field:after,
+#meter-field::after {
+  position: absolute;
+  top: 5px;
+  left: -15px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-right: solid 15px #81d4fa;
+  border-bottom: solid 10px transparent;
+  border-top: solid 10px transparent;
+}
+
+#password-strength-meter{
+  width: 100px;
+}
+#password-strength-text{
+  margin: 1px 1px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+meter{
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
+meter::-webkit-meter-bar {
+  border: 2px solid grey;
+  border-radius: 3px;
+}
+meter[value="0"]::-webkit-meter-optimum-value{ background: red; }
+meter[value="1"]::-webkit-meter-optimum-value { background: red; }
+meter[value="2"]::-webkit-meter-optimum-value { background: orange; }
+meter[value="3"]::-webkit-meter-optimum-value { background: lightgreen; }
+meter[value="4"]::-webkit-meter-optimum-value { background: green; }
+
+meter::-webkit-meter-even-less-good-value { background: red; }
+meter::-webkit-meter-suboptimum-value { background: orange; }
+meter::-webkit-meter-optimum-value { background: green; }
+
+meter[value="1"]::-moz-meter-bar,
+meter[value="1"]::-moz-meter-bar { background: red; }
+meter[value="2"]::-moz-meter-bar { background: orange; }
+meter[value="3"]::-moz-meter-bar { background: yellow; }
+meter[value="4"]::-moz-meter-bar { background: green; }
+
+meter::-webkit-meter-optimum-value {
+  transition: width .4s ease-out;
+}
+
+.details-field-error {
+  border-color: red !important;
+  background-color: #FFCDD2;
+}
+
+.details-field-valid {
+  border-color: green;
+  background-color: palegreen;
+}
+
+#validation-error{
+  background-color: #e57373;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  font-family: "Oswald";
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.submit-error{
+  background-color: gray!important;
+  pointer-events: none;
+}

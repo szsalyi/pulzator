@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import {AuthenticationService} from "./authentication.service";
 import { JwtModule } from "@auth0/angular-jwt";
+import { RegistrationComponent } from './registration/registration.component';
 
 export function tokenGetter() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -33,7 +34,8 @@ export function tokenGetter() {
     ProductSearchComponent,
     CategoriesComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

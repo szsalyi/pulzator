@@ -19,7 +19,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.sql.DataSource;
 
-@SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -65,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/", "/index.html", "/login",
                     "/registration", "/resources/**",
-                    "/app/**", "/*.js", "/assets/reset.css").permitAll()
+                    "/app/**", "/*.js", "/assets/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout()
@@ -103,5 +102,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         authProvider.setUserDetailsService(userDetailsService);
 
         return authProvider;
-    }*/
+    }
+    */
 }

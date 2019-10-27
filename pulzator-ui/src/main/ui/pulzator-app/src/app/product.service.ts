@@ -42,8 +42,9 @@ export class ProductService {
     return of(PRODUCTS.find(product => product.id === id));
 */
     const url = `${this.productUrl}/${id}`;
-    return this.http.get<Product>(url, this.headers).pipe(
-      tap(_ => this.log(`fetched product id=${id}`)),
+    return this.http.get<Product>(url, this.headers)
+      .pipe(
+        tap(_ => this.log(`fetched product id=${id}`)),
       catchError(this.handleError<Product>(`getProduct id=${id}`))
     )
   }
@@ -59,8 +60,8 @@ export class ProductService {
 
   addProduct(product: Product): Observable<Product> {
     return this.http.post(this.productUrl, product, this.headers).pipe(
-      tap((newPorduct: Product) => this.log(`added product w/ id=${newPorduct.id} and name=${newPorduct.name} product measure id=${newPorduct.productMeasure}`)),
-      catchError(this.handleError<Product>('addProduct'))
+      tap((newPorduct: Product) => this.log(`added product w/ id=${newPorduct.id} and name=${newPorduct.name} product measure id=${newPorduct.productMeasure} product category=${newPorduct.category.id}`)),
+      catchError(this.handleError<Product>(`oldProduct category`))
     );
   }
 

@@ -4,6 +4,7 @@ import { ProductService } from "../product.service";
 import {CategoryService} from "../category.service";
 import {Category} from "../categories/category";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router,
               private productService: ProductService,
-              private categoryService: CategoryService) {}
+              private categoryService: CategoryService,
+              private authService: AuthenticationService) {}
 
   ngOnInit() {
     this.getProducts();
@@ -31,5 +33,9 @@ export class DashboardComponent implements OnInit {
   getCategories(): void {
     this.categoryService.getCategories()
       .subscribe(categories => this.categories = categories)
-}
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 }

@@ -6,8 +6,8 @@ export class Product {
   name: string;
   quantity: number;
   enabled: boolean;
-  created_at: Date;
-  updated_at: Date;
+  createdAt: Date;
+  updatedAt: Date;
   productMeasure: ProductMeasure;
   price: number;
   category: Category;

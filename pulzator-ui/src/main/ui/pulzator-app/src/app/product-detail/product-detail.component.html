@@ -2,14 +2,38 @@
   <h2>{{product.name | uppercase}} Details</h2>
   <div><span>id: </span>{{product.id}}</div>
   <div>
-    <span>{{product.name}}</span>
-    <span>{{product.category_id}}</span>
-    <span>{{product.price}}</span>
-    <span>{{product.quantity}}</span>
-    <span>{{product.created_at}}</span>
-    <span>{{product.updated_at}}</span>
-    <span>{{product.enabled}}</span>
-    <span>{{product.product_measure}}</span>
+    <div>
+      <span>Név: </span>
+      <span>{{product.name}}</span>
+    </div>
+    <div>
+    <span>Kategória: </span><span>{{product.category.id}}</span>
+    </div>
+    <div>
+      <span>Ár: </span>
+      <span>{{product.price}}</span>
+    </div>
+    <div>
+      <span>Mennyiség: </span>
+      <span>{{product.quantity}}</span>
+    </div>
+
+    <div>
+      <span>Felvett: </span>
+      <span>{{product.createdAt}}</span>
+    </div>
+    <div>
+      <span>Módosítva: </span>
+      <span>{{product.updatedAt}}</span>
+    </div>
+    <div>
+      <span>Engedélyezett: </span>
+      <span>{{product.enabled}}</span>
+    </div>
+    <div>
+      <span>Termék mértékegysége: </span>
+      <span>{{product.product_measure}}</span>
+    </div>
   </div>
   <div>
     <label>name:

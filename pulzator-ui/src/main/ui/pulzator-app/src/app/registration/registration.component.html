@@ -1,0 +1,49 @@
+<div>
+  <h1>Regisztráció</h1>
+  <form class="registration-form" >
+    <div class="header-field">
+      <span>Create an Account</span>
+    </div>
+    <div class="details-field-error error" *ngIf="">
+      <span>Regisztráció sikertelen</span>
+    </div>
+    <div class="details-field">
+      <label class="" for="userName" > User Name<span class="red">*</span> </label>
+      <input class="input-field" #username
+             (blur)="userExists(user.userName)"
+             ngClass="{'details-field-error' : userExistsVal === true, 'details-field-valid' : userExistsVal === false}"
+             id="userName" type="text" placeholder="Enter Username" required="required"/>
+    </div>
+    <div class="details-field">
+      <label class="" for="firstName"> First Name<span class="red">*</span> </label>
+      <input class="input-field" id="firstName" #fistname type="text" placeholder="Enter First Name" required="required"/>
+    </div>
+    <div class="details-field">
+      <label class="" for="lastName"> Last Name<span class="red">*</span> </label>
+      <input class="input-field" id="lastName" #lastName type="text" placeholder="Enter Last Name" required="required"/>
+    </div>
+    <div class="details-field">
+      <label class="" for="password"> Password<span class="red">*</span> </label>
+      <input class="input-field" id="password" #password type="password" (focus)="focused = true"
+             (change)="calculatePasswordStrength()"
+             placeholder="Enter Password" required="true"/>
+      <div id="meter-field" *ngIf="focused">
+        <p id="password-strength-text">{{passwordStrength.text}}</p>
+        <meter value="{{passwordStrength.score}}" max="4" id="password-strength-meter"></meter>
+      </div>
+    </div>
+    <div class="details-field">
+      <label class="" for="confirmPassword"> Confirm Password<span class="red">*</span> </label>
+      <input class="input-field" id="confirmPassword" ngModel="confirmPassword"
+             ngClass="{'details-field-error' : user.password != confirmPassword}"
+             type="password" name="confirmPassword" placeholder="Enter Password Again" required="required"/>
+    </div>
+    <span id="validation-error" (show)="registration.user.password != registration.confirmPassword">Passwords doesn't match!</span>
+    <div class="details-field">
+      <label class="" for="email"> Email<span class="red">*</span> </label>
+      <input class="input-field" id="email" type="email" #email placeholder="Enter Email Adress" required="true"/>
+    </div>
+    <span class="information">A <span class="red">*</span> jelölt részek kitöltése kötelező!</span>
+    <button (click)="registration(username.value, fistname.value, lastName.value, password.value, email.value)">Regisztráció</button>
+  </form>
+</div>

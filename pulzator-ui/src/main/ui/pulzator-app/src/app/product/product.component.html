@@ -3,12 +3,28 @@
 <div>
   <label>
     Product Name:
-    <input #productName />
-    <input #productQuantity />
-    <input #productEnabled />
-    <input #productPrice />
+    <div>
+      <span>Név: </span><input #productName />
+    </div>
+    <div>
+      <span>Mennyiség: </span><input #productQuantity />
+    </div>
+    <div>
+      <span>Elérhető: </span><input #productEnabled />
+    </div>
+    <div>
+      <span>Ár: </span><input #productPrice />
+    </div>
+    <div>
+      <select #categoryId required>
+        <option value="0">--Kategóriák--</option>
+        <option *ngFor="let category of categories" value="{{category.id}}">
+          {{category.name}}
+        </option>
+      </select>
+    </div>
   </label>
-  <button (click)="add(productName.value, productQuantity.value, productEnabled.value, productPrice.value);">
+  <button (click)="add(productName.value, productQuantity.value, productEnabled.value, productPrice.value, categoryId.value);">
     add
   </button>
 </div>

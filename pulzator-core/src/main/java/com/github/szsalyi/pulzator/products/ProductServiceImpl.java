@@ -34,7 +34,8 @@ public class ProductServiceImpl implements ProductService {
         productVO.setProductMeasure(productMeasure);
         Product product = productMapper.toEntity(productVO);
 
-        return productMapper.toVO(productRepository.save(product));
+        Product save = productRepository.save(product);
+        return productMapper.toVO(save);
     }
 
     @Override

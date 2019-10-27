@@ -9,6 +9,7 @@ import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from "./login/login.component";
 import {AuthGuardService} from "./auth-guard.service";
 import {RoleGuardService} from "./role-guard.service";
+import {RegistrationComponent} from "./registration/registration.component";
 
 const routes: Routes =  [
   { path: 'login', component: LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes =  [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   { path: 'products', component: ProductComponent, canActivate: [RoleGuardService], data: { expectedRole: 'ROLE_ADMIN' } },
   { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuardService]},
-  { path: 'detail/:id', component: ProductDetailComponent, canActivate: [AuthGuardService]}
+  { path: 'detail/:id', component: ProductDetailComponent, canActivate: [AuthGuardService]},
+  { path: 'registration', component: RegistrationComponent}
 ];
 
 @NgModule({
