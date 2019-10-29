@@ -1,18 +1,92 @@
 <h3>Kategóriák</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let category of categories" class="col-1-4">
-      <div class="module product">
-        <h4>{{category.name}}</h4>
+<div class="">
+  <a *ngFor="let category of categories" class="">
+      <div class="module category">
+        {{category.name}}
       </div>
+    <a *ngFor="let product of category.products" class="">
+      <div class="module product">
+        {{product.name}}
+      </div>
+    </a>
   </a>
-  <h3>Termékek</h3>
-  <a *ngFor="let product of products" class="col-1-4"
-       routerLink="/detail/{{product.id}}">
-      <div class="module product">
-        <h4>{{product.name}}</h4>
-      </div>
 
-  </a>
+  <table mat-table
+         [dataSource]="dataSource" multiTemplateDataRows
+         class="mat-elevation-z8">
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail"  class="mat-elevation-z8">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+        <div class="example-element-detail"
+             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="example-element-diagram">
+            <div class="example-element-position"> {{element.name}} </div>
+          </div>
+          <div class="example-element-description">
+            {{element.description}}
+            <span class="example-element-description-attribution"> -- Termékek </span>
+          </div>
+          <div class="example-element-description">
+            <table mat-table [dataSource]="element.products" matSort>
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> NÉV </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+              <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> MENNYISÉG </th>
+                <td mat-cell *matCellDef="let element">
+                  <div>
+                    <input type="number" id="sold-quantity-input" [(ngModel)]="element.quantity" />
+                  </div>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> ÁR </th>
+                <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+              </ng-container>
+              <ng-container matColumnDef="enabled">
+                <th mat-header-cell *matHeaderCellDef> Engedélyezett </th>
+                <td mat-cell *matCellDef="let element"> {{element.enabled}} </td>
+              </ng-container>
+              <ng-container matColumnDef="productMeasure">
+                <th mat-header-cell *matHeaderCellDef> Mértékegység </th>
+                <td mat-cell *matCellDef="let element"> {{element.productMeasure.name}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="getDisplayedProductsColumns()"></tr>
+              <tr mat-row *matRowDef="let row; columns: getDisplayedProductsColumns();"
+                  routerLink="/detail/{{row.id}}"
+                  class="example-detail-row"></tr>
+            </table>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let element; columns: getDisplayedCategoriesColumns();"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </table>
+  <button mat-raised-button type="submit" (click)="save()">
+    <i class="material-icons mr-2">save</i>Save
+  </button>
+
+<!--  <h3>Termékek</h3>
+          <a *ngFor="let product of products" class="col-1-4"
+        routerLink="/detail/{{product.id}}">
+       <div class="module product">
+         <h4>{{product.name}}</h4>
+       </div>
+
+   </a>-->
 </div>
 <div>
   <button (click)="logout()">Logout</button>

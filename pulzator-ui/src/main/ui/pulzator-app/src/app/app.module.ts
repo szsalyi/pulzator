@@ -18,6 +18,10 @@ import {AuthenticationService} from "./authentication.service";
 import { JwtModule } from "@auth0/angular-jwt";
 import { RegistrationComponent } from './registration/registration.component';
 
+import { MatTableModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 export function tokenGetter() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -47,7 +51,9 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:4200']
       }
-    })
+    }),
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [AuthenticationService],
   bootstrap: [ AppComponent ]

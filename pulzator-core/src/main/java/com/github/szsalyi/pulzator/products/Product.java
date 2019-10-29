@@ -50,7 +50,7 @@ public class Product extends DateAudit {
     @NotNull
     private boolean enabled;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull
     private ProductMeasure productMeasure;
 

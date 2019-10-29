@@ -3,9 +3,19 @@
 html, body {
   margin: 0;
   min-height: 100%;
+  min-width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;}
+  justify-content: center;
+}
+
+app-root {
+  min-width: 100%;
+}
+
+app-dashboard {
+  min-width: 80%;
+}
 
 .delete {
   margin-left: 120px;
@@ -14,3 +24,6 @@ html, body {
 image {
   opacity: 50%;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

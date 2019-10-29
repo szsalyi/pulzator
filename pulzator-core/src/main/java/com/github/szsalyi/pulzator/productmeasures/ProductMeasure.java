@@ -30,7 +30,7 @@ public class ProductMeasure implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @NaturalId
-    @Column(name = "rolename", length = 60)
+    @Column(name = "name", length = 60)
     private ProductMeasureName name;
 
 }
